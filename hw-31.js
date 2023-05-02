@@ -22,7 +22,7 @@ const productPrice = product => {
     salePrice = (price - price / 100 * discount).toFixed(2);
   }
   
-  return `<div class="price">${price}, ${discount !== 0 ? "price with discount " + salePrice : ''}</div>`;
+  return `<div class="price">${price} ${discount !== 0 ? ", price with discount " + salePrice : ''}</div>`;
 }
 
 const productDescription = product => `<div class="description">${product.description}</div>`;
