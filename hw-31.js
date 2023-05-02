@@ -42,7 +42,7 @@ const productItem = (product) => {
       ${productTitle(product)}
       ${productPrice(product)}
       ${productDescription(product)}
-      ${productActions(product)}                  
+      ${productActions()}                  
     </div>
   </section>`;
 }
