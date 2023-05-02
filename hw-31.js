@@ -33,7 +33,7 @@ const productActions = () => `
   <button class="button more">More Details</button>
 </div>`;
 
-function productItem (product) {
+const productItem = (product) => {
   console.log(product);
   return `
   <section class="product-item">
