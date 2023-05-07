@@ -33,7 +33,6 @@ const shape = {
           const recordDependiesName = Object.values( hr[i].dependencies ).join('');
           
           if (recordDependiesName === objDependiesName) {
-            console.log('get record');
             return hr[i].perimeter;
           }
       }
@@ -51,8 +50,7 @@ const shape = {
       dependencies: Object.assign({}, this.dependencies),
       perimeter: total,
     });
-
-    console.log('calc');
+    
     return total;
   },
 
