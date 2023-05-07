@@ -23,10 +23,8 @@ async function getAllProducts(...params) {
     const productsTamplate = `
        <article class="products">
           ${prouducts
-            .sort(function(a, b){
-              const ratingA = a.rating;
-              const ratingB = b.rating;
-              return ratingB - ratingA;
+            .sort(function(a, b) {          
+              return b.rating - a.rating;
             })
             .map((product) => {
               const { brand, category } = product;
