@@ -1,24 +1,24 @@
-const filterProducts = (...args) => {
-  const [products, params] = args;
-  const filterParam = params[params.length - 1];  
-  const filterParamKey = Object.keys(filterParam)[0]
-
-  if (Object.values(filterParam)[0]) {
-    const filteredProducts = products.filter((product) => {
-        return product[filterParamKey] == filterParam[filterParamKey];
+const filterProducts = (...params) => {
+  const [products, filter] = params;
+  let filterParamLastKey;
+  for (key in filter) {
+    filterParamLastKey = key;
+  }
+  if (filter[filterParamLastKey]) {
+    const filteredProducts = products.filter((product) => {      
+      return product[filterParamLastKey] == filter[filterParamLastKey];
     });
-    
+
     return filteredProducts;
   } else {
     return products;
   }
-
 }
 
-async function getAllProducts(...params) {
+async function getAllProducts(filter) {
   const response = await fetchAllProducts();
-  const prouducts = !params.length ? response.products : filterProducts(response.products, params);
-
+  const prouducts = !filter ? response.products : filterProducts(response.products, filter);
+  
   if (prouducts.length) {
     const productsTamplate = `
        <article class="products">
@@ -41,14 +41,17 @@ async function getAllProducts(...params) {
   
     document.getElementById("app").innerHTML = productsTamplate;    
   } else {
-    document.getElementById("app").innerHTML = 'There are no products by your search request';    
+    document.getElementById("app").innerHTML = 'There are no products by your search request'; 
   }
 }
 
-const getSearchParam = (param) => {
-  const value = prompt(`Enter the valuer of "${param}" searching parameter`);
-  return {[param]: value};
+const getSearchParam = (...params) => {
+  const searchParams = {};
+  params.forEach(param => {
+    searchParams[param] = prompt(`Enter the valuer of "${param}" searching parameter`);
+  });
+  return searchParams;
 }
 
 // getAllProducts();
-getAllProducts(getSearchParam('price'), getSearchParam('brand'));
+getAllProducts(getSearchParam('price', 'brand'));
