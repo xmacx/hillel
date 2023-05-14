@@ -1,14 +1,13 @@
 function* getPartsOfWord (string) {
   let i = 0,
       value;
-
   while (i <= string.length) {
     i++;
-
     if (i > string.length) {
       return string.slice(0, i);      
     } else {
-      value = value ? yield string.slice(0, i).concat(value) : yield string.slice(0, i);
+      // value = value ? yield string.slice(0, i).concat(value) : yield string.slice(0, i);
+      value = yield string.slice(0, i).concat(value ?? '');
     }
   }
 }
