@@ -6,7 +6,7 @@ function* getPartsOfWord (string) {
     if (i > string.length) {
       return string.slice(0, i);      
     } else {
-      //   value = value ? yield string.slice(0, i).concat(value) : yield string.slice(0, i);
+      //  value = value ? yield string.slice(0, i).concat(value) : yield string.slice(0, i);
       value = yield string.slice(0, i).concat(value ?? '');
     }
   }
