@@ -13,7 +13,11 @@ class Appartment {
   residents = [];
 
   addResident(human) {
-    this.residents.push(human);      
+    if ( !(human instanceof Human) ) {
+      console.log('Its not a Human instance');
+    } else {
+      this.residents.push(human);      
+    }
   }
 }
 
@@ -25,10 +29,14 @@ class Building {
   }
 
   addAppartment (appartment) {    
-    if (this.appartments.length >= this.appartmentMaxCount) {
-      console.log('There\s no more place in this building');
+    if ( !(appartment instanceof Appartment )) {
+      console.log('Its not a Human instance');
     } else {
-      this.appartments.push(appartment);
+        if (this.appartments.length >= this.appartmentMaxCount) {
+          console.log('There\s no more place in this building');
+        } else {
+          this.appartments.push(appartment);
+        }
     }
   }
 }
