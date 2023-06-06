@@ -69,7 +69,6 @@ class Hamburger {
         return acc + item[attr];
       }, 0)      
     }
-    console.log();
     return toppingAttr;
   }
 
