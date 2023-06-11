@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calc {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+            padding-top: 15vh;
+        }
+        .calc-range {
+            display: flex;
+            margin-bottom: 30px;
+        }
+        .calc-range__input {
+            width: 90%;
+        }
+        .calc-range__num {
+            width: calc(100% - 90%);
+            margin-left: 5%;
+        }
+
+        .calc-diag {
+            position: relative;
+            width: 100%;
+            height: 108px;
+            margin-bottom: 30px;
+            background-color: rgba(0, 0, 0, .05);
+        }
+        .calc-diag__range,
+        .calc-diag__comm {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transition: all .3s ease-in-out;
+        }
+        .calc-diag__range { background: green; }
+        .calc-diag__comm { background: red; }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <div class="calc-range">
+            <input type="range" min="0" max="100" value="0" name="calc-rang" class="calc-range__input">
+            <input type="number" min="0" max="100" name="calc-rang-num" class="calc-range__num">
+        </div>
+        <div class="calc-diag">
+            <div class="calc-diag__range"></div>
+            <div class="calc-diag__comm"></div>
+        </div>
+        <div class="calc__res">Всего сумма: <span></span></div>
+    </div>
+</body>
+<script src="hw-46.js"></script>
+</html>
