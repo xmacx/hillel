@@ -9,11 +9,15 @@ const textarea = document.querySelector('textarea');
 setInterval(() => {
   textarea.value = '';
   
-  textarea.value =  inputs.reduce((res, input, index) => {    
-    if (input.value !== '') {
-      console.log(index, input.value);
-      return  res + `Input ${index + 1} = ${input.value}\n`;
+  const newTextareaValue = inputs.reduce((acc, input, index) => {    
+    if (input.value !== '') {      
+      return  acc + `Input ${index + 1} = ${input.value}\n`;
     }
-    return res;
+    return acc;
   }, '');
-}, 1000)
+
+  if (textarea.value !== newTextareaValue) {
+    textarea.value =  newTextareaValue;
+  }  
+  
+}, 1000);
