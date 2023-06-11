@@ -19,15 +19,29 @@ function onLoadHandler() {
   const rangeNum = document.querySelector(".calc-range__num");
   const diagramRange = document.querySelector(".calc-diag__range");
   const diagramComm = document.querySelector(".calc-diag__comm");
-  const calcRes = document.querySelector(".calc__res span");
+  const calcRes = document.querySelector(".calc__res span");  
 
-  const setNum = event => {
-    const value = event.target.value;
+  const onChangeRange = function() {
+    const value = parseInt(this.value);
+    
     rangeNum.value = value;
-    viewResults(value);
+    updateDiagram(value, getCommision(value));
+  }
+    
+  const onChangeInput = function() {  
+    const value = parseInt(this.value);
+    const validatedValue = validateInput(value);
+    
+    updateRange(validatedValue);
+    updateDiagram(validatedValue, getCommision(validatedValue));
   }
 
-  const validateRangeNum = value => {
+  const updateRange = function(value) {    
+    rangeNum.value = value;
+    rangeInput.value = value;
+  }
+
+  const validateInput = value => {
     if (value > 100) {
       value = 100;
     } else if (value < 0) {
@@ -36,15 +50,7 @@ function onLoadHandler() {
     return value;
   };
 
-  const setRange = event => {
-    const inputValue = event.target.value;
-    const validatedValue = validateRangeNum(inputValue);
-    rangeNum.value = validatedValue;
-    rangeInput.value = validatedValue;
-    viewResults(validatedValue);
-  }  
-
-  const calculateComm = value => {   
+  const getCommision = value => {   
     switch (true) {
       case value == 0:
         return 0;
@@ -61,25 +67,17 @@ function onLoadHandler() {
     }
   }
 
-  const setDiagRange = value => {
+  const updateDiagram = function(value, commision) {
     diagramRange.style.height = value + 'px';
-  }
-  const setDiagComm = value => {
+    
     diagramComm.style.bottom = value + 'px';
-    diagramComm.style.height = calculateComm(parseInt(value)) + 'px';
+    diagramComm.style.height = commision + 'px';
+    
+    calcRes.innerHTML = value + commision;
   }
-  const setResultText = value => {
-    calcRes.innerHTML = parseInt(value) + calculateComm(parseInt(value));
-  }
-
-  const viewResults = value => {
-    setDiagRange(value);
-    setDiagComm(value);
-    setResultText(value);
-  }
-
-  rangeInput.addEventListener("change", setNum);  
-  rangeNum.addEventListener("input", setRange);
+  
+  rangeInput.addEventListener("change", onChangeRange);  
+  rangeNum.addEventListener("input", onChangeInput);
 }
 
 window.onload = onLoadHandler;
