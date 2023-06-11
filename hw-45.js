@@ -8,9 +8,12 @@ const textarea = document.querySelector('textarea');
 
 setInterval(() => {
   textarea.value = '';
-  textarea.value = inputs.reduce((res, input, index) => {
+  
+  textarea.value =  inputs.reduce((res, input, index) => {    
     if (input.value !== '') {
+      console.log(index, input.value);
       return  res + `Input ${index + 1} = ${input.value}\n`;
     }
+    return res;
   }, '');
 }, 1000)
