@@ -27,7 +27,7 @@ function onLoadHandler() {
     viewResults(value);
   }
 
-  const validateRangeInput = value => {
+  const validateRangeNum = value => {
     if (value > 100) {
       value = 100;
     } else if (value < 0) {
@@ -38,7 +38,7 @@ function onLoadHandler() {
 
   const setRange = event => {
     const inputValue = event.target.value;
-    const validatedValue = validateRangeInput(inputValue);
+    const validatedValue = validateRangeNum(inputValue);
     rangeNum.value = validatedValue;
     rangeInput.value = validatedValue;
     viewResults(validatedValue);
@@ -68,11 +68,14 @@ function onLoadHandler() {
     diagramComm.style.bottom = value + 'px';
     diagramComm.style.height = calculateComm(parseInt(value)) + 'px';
   }
+  const setResultText = value => {
+    calcRes.innerHTML = parseInt(value) + calculateComm(parseInt(value));
+  }
 
   const viewResults = value => {
     setDiagRange(value);
     setDiagComm(value);
-    calcRes.innerHTML = parseInt(value) + calculateComm(parseInt(value));
+    setResultText(value);
   }
 
   rangeInput.addEventListener("change", setNum);  
