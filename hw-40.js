@@ -37,9 +37,9 @@ class Hamburger {
   static STUFFING_SALAD =  {price: 20, calories: 5};
   static STUFFING_POTATO = {price: 15, calories: 10}; 
   
-  static TOPPING_SEASONING = {price: 15, calories: 0};
-  static TOPPING_MAYO = {price: 20, calories: 5};
-  static TOPPING_SAUCE = {price: 10, calories: 5};
+  static TOPPING_SEASONING = {name: 'Seasoning', price: 15, calories: 0};
+  static TOPPING_MAYO = {name: 'Mayo',price: 20, calories: 5};
+  static TOPPING_SAUCE = {name: 'Sauce',price: 10, calories: 5};
   
   size = null;
   stuffing = null;
@@ -58,8 +58,12 @@ class Hamburger {
     }
   }
 
+  getAllTopings() {
+    return this.topping.map(el => el.name).join(', ');
+  }
   addTopping(topping) {
-    this.topping.push(topping);
+    this.topping.push(topping);    
+    console.log('You add new topping "' + topping.name + '". Now you have such toppings:', this.getAllTopings());
   }
 
   getToppingAttr(attr) {
@@ -95,3 +99,6 @@ console.log("Price: " + hamburger.calculatePrice());
 
 hamburger.addTopping(Hamburger.TOPPING_SAUCE);
 console.log("Price with sauce: " + hamburger.calculatePrice());
+
+// console.log(hamburger.getAllTopings());
+console.log(hamburger);
