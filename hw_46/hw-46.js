@@ -24,7 +24,7 @@ function onLoadHandler() {
   const onChangeRange = function() {
     const value = parseInt(this.value);
     
-    rangeNum.value = value;
+    updateInput(value);    
     updateDiagram(value, getCommision(value));
   }
     
@@ -32,12 +32,16 @@ function onLoadHandler() {
     const value = parseInt(this.value);
     const validatedValue = validateInput(value);
     
+    updateInput(validatedValue)
     updateRange(validatedValue);
     updateDiagram(validatedValue, getCommision(validatedValue));
   }
-
-  const updateRange = function(value) {    
-    rangeNum.value = value;
+  
+  const updateInput = function(value) {  
+    rangeNum.value = value; 
+  
+  }
+  const updateRange = function(value) {
     rangeInput.value = value;
   }
 
