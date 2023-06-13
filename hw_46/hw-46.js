@@ -29,17 +29,19 @@ function onLoadHandler() {
   }
     
   const onChangeInput = function() {  
-    const value = parseInt(this.value);
-    const validatedValue = validateInput(value);
-    
-    updateInput(validatedValue)
-    updateRange(validatedValue);
-    updateDiagram(validatedValue, getCommision(validatedValue));
+    let value = parseInt(this.value);    
+
+    if (value !== validateInput(value)) {
+      value = validateInput(value);
+      updateInput(value)
+    }
+
+    updateRange(value);
+    updateDiagram(value, getCommision(value));
   }
   
   const updateInput = function(value) {  
     rangeNum.value = value; 
-  
   }
   const updateRange = function(value) {
     rangeInput.value = value;
