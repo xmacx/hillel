@@ -1,19 +1,38 @@
 // HW 47. Таблиця
 // Вивести таблицю 10 × 10, заповнену числами від 1 до 100 (таблиця створюється динамічно)
 
-const table = document.createElement('table');
-let number = 1;
+// HW 47. Таблиця
+// Вивести таблицю 10 × 10, заповнену числами від 1 до 100 (таблиця створюється динамічно)
 
-for (let i = 0; i < 10; i++) {
-  const column = document.createElement('tr');
+function newNumTable( rows, cols ) {  
+  const createCell = createCellFunc();  
 
-  for (let j = 0; j < 10; j++) {
-    const cell = document.createElement('td');
-    cell.innerText = number;
-    column.append(cell);
-    number++;
+  function createCellFunc() {
+    let number = 1;
+    return function() {
+      const cell = document.createElement('td');
+      cell.innerText = number++;
+      return cell;
+    }
   }
-  table.append(column);
+  
+  function createRow(cols) {
+    const row = document.createElement('tr');  
+    for (let i = 0; i < cols; i++) {
+      row.append(createCell());
+    }    
+    return row;
+  }
+
+  function createTable(rows) {
+    const table = document.createElement('table');    
+    for (let i = 0; i < rows; i++) {
+      table.append(createRow(cols));
+    }
+    return table;
+  }
+  
+  return createTable(rows);
 }
 
-document.body.append(table);
+document.body.append(newNumTable(10, 10));
