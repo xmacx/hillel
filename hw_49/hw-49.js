@@ -59,9 +59,6 @@ window.onload = function () {
       const textarea = document.createElement('textarea');
       textarea.rows = 3;
       textarea.value = td.innerText;
-
-      backupCellText(td);    
-      setCellClear(td);
       
       return textarea;
     }
@@ -78,6 +75,9 @@ window.onload = function () {
       btnWrap.append( addButton('cancel') );
       
       editTool.append(btnWrap);
+      
+      backupCellText(td);    
+      setCellClear(td);
       
       td.classList.toggle('cell-edit');
       
