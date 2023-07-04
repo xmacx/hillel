@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        .counters {
+            margin: 10vh auto 0;
+            max-width: 500px;
+            width: 100%;
+        }
+        .counter-box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            border: 1px solid #e1e1e1;
+            width: 100%;
+        }
+        .btn-set,
+        .counter-box input,
+        .counter-box button {
+            -webkit-appearance: none;
+            appearance: none;
+            display: block;
+            height: 40px;
+            border-radius: 3px;
+            text-align: center;
+        }
+        .counter-box input {
+            width: 54%;
+            margin-right: 3%;
+            border: 1px solid #a1a1a1;
+            font-size: 18px;
+        }
+        .btn-set,
+        .counter-box button {
+            width: 20%;
+            background-color: #00cc00;
+            box-shadow: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: .02em;
+            text-transform: uppercase;
+            color: #fff;
+            cursor: pointer;
+        }
+        .counter-box button + button {
+            margin-left: 3%;
+        }
+        .counter-box .btn-clear {
+            background-color: #c1c1c1;
+        }
+        .btn-set {
+            height: 40px;
+            width: 100%;
+            background-color: #FC6510;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="counters">
+        <div class="counter-box counter-box-1">
+            <input type="number" id="counter-box__num1" value="">
+            <button type="button" class="btn-add">click</button>
+            <button type="button" class="btn-clear">clear counter</button>
+        </div>
+    
+        <div class="counter-box counter-box-2">
+            <input type="number" id="counter-box__num2" value="">
+            <button type="button" class="btn-add">click</button>
+            <button type="button" class="btn-clear">clear counter</button>
+        </div>
+        
+        <button type="button" class="btn-set">set counter</button>
+    </div>
+</body>
+<script src="hw-50.js"></script>
+
+</html>
