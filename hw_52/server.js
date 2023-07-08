@@ -12,10 +12,9 @@ const app = express();
 const port = 3000;
 const dataJson = "./model/data.json";
 
-app.use((req, res, next) => {
-  next();
-});
-
+// app.use((req, res, next) => {
+//   next();
+// });
 
 const filters = {
   productName: (keyValue, item) => keyValue !== undefined && item.productName.toString().includes(keyValue),
