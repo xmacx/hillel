@@ -1,0 +1,71 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  font-size: 15px;
+  line-height: 1.4;
+  font-family: sans-serif;
+  background: linear-gradient(90deg, #7474BF 10%, #348AC7 90%);
+}
+.weather-app {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 500px;
+  width: 100%;
+  border-radius: 30px;
+  margin: 10vh auto 20px;
+  background-color: #f1f1f1;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+.weather-app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: #2ab2ea;
+  color: #fff;
+}
+.weather-app__time {
+  font-size: 18px;
+}
+.weather-app-main,
+.weather-app-add {
+  padding: 10px 20px;
+}
+.weather-app-main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
+  background-color: #292929;
+  color: #fff;
+  line-height: 1;
+}
+.weather-app-add { 
+  width: 65%;
+}
+.weather-app__temp {
+  font-size: 54px;
+  font-weight: 300;
+}
+.weather-app__city {
+  font-size: 24px;
+  font-weight: 700;
+} 
+.weather-app__pressure {
+
+}
+.weather-app__description {
+
+}
+.weather-app__humidity {
+
+}
+.weather-app__speed {
+
+}
+.weather-app__deg {
+
+}
