@@ -9,68 +9,77 @@
 //   5 | 6
 //   7 | 8
 
-const promise1 = new Promise(function(resolve, reject) {
-  resolve('0');
-}).then(
-  (v) => {
-    console.log(v);
-    return '1';
-  }
-).then(
-  (v) => {
-    console.log(v);
-    return Promise.resolve('3');
-  }
-).then(
-  (v) => {
-    console.log(v);
-    return Promise.reject('6');
-  }
-).then(
-  (v) => {
-    console.log(v);
-  },
-  (err) => {
-    console.log(err);
-    return new Promise(function(res, rej) {
-      rej('8');
-    });
-  }
-).then(null, (err) => {
-    console.log(err);
-    return new Promise(function(resolve, reject) {
-      reject('0');
-    });
-  }
-).then(
-  (v) => {
-    console.log(v);
-    return '1';
-  },
-  (err) => {
-    console.log('\n');
-    console.log(err);
-    return '2';
-  },
-).then(
-  (v) => {
-    console.log(v);
-    return '3';
-  }
-).then(
-  (v) => {
-    console.log(v);
-    throw new Error("6")
-    // return Promise.reject('6');
-  }
-).then(
-  null,
-  (err) => {
-    console.log(err);
-    return new Promise(function(res, rej) {
-      res('7');
-    });
-  }
-).then((v) => {
-    console.log(v);
+const promise1 = new Promise(function(res, rej) {
+  console.log(0);
+  res();
 });
+
+promise1.then(
+  () => {  
+    console.log('1');
+  },
+  () => {
+    console.log('2');
+  }
+).then(
+  () => {
+    console.log('3');
+    return Promise.reject();
+  },
+  () => {
+    console.log('4');
+  }
+).then(
+  () => {
+    console.log('5');    
+  },
+  () => {
+    console.log('6');
+    return Promise.reject();
+  }
+).then(
+  () => {
+    console.log('7');
+  },
+  () => {
+    console.log('8');
+  }
+)
+
+const promise2 = new Promise(function(res, rej) {
+  setTimeout(() => {
+    console.log(0);
+    rej();
+  });
+});
+
+promise2.then(
+  () => {  
+    console.log('1');
+  },
+  () => {
+    console.log('2');
+  }
+).then(
+  () => {
+    console.log('3');
+    return Promise.reject();
+  },
+  () => {
+    console.log('4');
+  }
+).then(
+  () => {
+    console.log('5');    
+  },
+  () => {
+    console.log('6');    
+  }
+).then(
+  () => {
+    console.log('7');
+  },
+  () => {
+    console.log('8');
+  }
+)
