@@ -63,7 +63,7 @@ promise2.then(
 ).then(
   () => {
     console.log('3');
-    return Promise.reject();
+    throw new Error('Error');
   },
   () => {
     console.log('4');
