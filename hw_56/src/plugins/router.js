@@ -35,9 +35,9 @@ export default class Router {
     #updateView(pathTo) {
         let ComponentSearched = this.#findComponent(pathTo)
 
-        // if (!(ComponentSearched instanceof Component)) {
-        //     ComponentSearched = this.#findComponent('*')
-        // }
+        if (!(ComponentSearched.prototype instanceof Component)) {
+            ComponentSearched = this.#findComponent('*')
+        }
         
         this.#renderComponent(ComponentSearched)
     }
